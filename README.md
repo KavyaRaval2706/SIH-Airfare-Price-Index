@@ -25,8 +25,9 @@ SIH-Airfare-Price-Index/
 │   └── import_to_mysql.py
 │
 └── README.md
+'''
 
-Dataset
+##Dataset
 
 The current prototype uses a cleaned airfare dataset containing 94 observations.
 
@@ -43,7 +44,8 @@ Base fare
 Taxes
 Mandatory charges
 Total fare
-Setup Instructions
+
+## Setup Instructions
 1. Install required Python packages
 
 Open the terminal and run:
@@ -84,7 +86,7 @@ FROM fare_observations;
 
 The current prototype should contain 94 observations.
 
-Important
+## Important
 
 Do not upload MySQL passwords, API keys, or other credentials to GitHub.
 
