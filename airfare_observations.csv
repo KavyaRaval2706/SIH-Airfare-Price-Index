@@ -1,0 +1,95 @@
+observation_id,observation_date,source,airline,flight_number,origin,destination,travel_date,departure_time,stops,booking_window,fare_type,base_fare,taxes,mandatory_charges,total_fare,data_status
+OBS001,2026-08-21,Synthetic Demo,IndiGo,AI512,AMD,DEL,2026-09-05,11:30,0,15,Economy,5176.0,748,150,6074,Observed
+OBS002,2026-08-19,Synthetic Demo,Air India Express,6E201,AMD,DEL,2026-10-18,11:30,0,60,Economy,3957.0,537,250,4744,Observed
+OBS003,2026-08-14,Synthetic Demo,Air India,6E101,BOM,DEL,2026-08-29,09:45,1,15,Premium Economy,6020.0,666,200,6886,Observed
+OBS004,2026-08-04,Synthetic Demo,IndiGo,QP1102,BOM,BLR,2026-09-18,15:30,0,45,Economy,3822.0,484,220,4526,Observed
+OBS005,2026-08-03,Synthetic Demo,SpiceJet,AI512,DEL,BLR,2026-08-10,08:00,0,7,Economy,5846.0,872,180,6898,Observed
+OBS006,2026-08-04,Synthetic Demo,Air India Express,QP1102,DEL,BLR,2026-08-05,09:45,0,1,Premium Economy,8188.0,928,150,9266,Observed
+OBS007,2026-08-20,Synthetic Demo,Air India,AI402,BLR,MAA,2026-09-10,20:30,1,21,Premium Economy,5475.0,722,250,6447,Observed
+OBS008,2026-08-08,Synthetic Demo,Akasa Air,6E101,AMD,DEL,2026-08-29,15:30,1,21,Premium Economy,5151.0,750,250,6151,Observed
+OBS009,2026-08-11,Synthetic Demo,Air India,SG501,BOM,DEL,2026-08-14,09:45,0,3,Economy,5741.0,735,200,6676,Observed
+OBS010,2026-08-19,Synthetic Demo,Air India Express,QP1102,DEL,CCU,2026-08-22,11:30,0,3,Premium Economy,6588.0,674,150,7412,Observed
+OBS012,2026-08-04,Synthetic Demo,SpiceJet,6E201,DEL,BLR,2026-08-11,13:15,1,7,Economy,5492.0,811,200,6503,Observed
+OBS013,2026-08-17,Synthetic Demo,Air India,QP1401,BLR,MAA,2026-10-01,11:30,0,45,Premium Economy,4696.0,596,250,5542,Observed
+OBS014,2026-08-01,Synthetic Demo,SpiceJet,6E101,DEL,MAA,2026-08-02,08:00,0,1,Premium Economy,7917.0,887,250,9054,Observed
+OBS015,2026-08-03,Synthetic Demo,IndiGo,AI402,BOM,DEL,2026-09-17,09:45,1,45,Economy,3888.0,558,220,4666,Observed
+OBS016,2026-08-07,Synthetic Demo,SpiceJet,IX321,DEL,BOM,2026-08-22,15:30,1,15,Premium Economy,4990.0,555,200,5745,Observed
+OBS017,2026-08-01,Synthetic Demo,SpiceJet,AI512,BLR,MAA,2026-08-22,06:30,0,21,Economy,3234.0,469,200,3903,Observed
+OBS018,2026-08-03,Synthetic Demo,SpiceJet,SG501,DEL,BOM,2026-08-18,11:30,0,15,Premium Economy,5122.0,633,220,5975,Observed
+OBS019,2026-08-07,Synthetic Demo,IndiGo,QP1102,AMD,BOM,2026-08-10,18:00,1,3,Premium Economy,6758.0,694,150,7602,Observed
+OBS020,2026-08-02,Synthetic Demo,Air India Express,AI512,DEL,MAA,2026-09-16,11:30,0,45,Premium Economy,4989.0,544,220,5753,Observed
+OBS022,2026-08-13,Synthetic Demo,IndiGo,6E101,AMD,BLR,2026-08-16,18:00,0,3,Premium Economy,7895.0,1064,250,9209,Observed
+OBS023,2026-08-16,Synthetic Demo,Air India,AI512,DEL,BOM,2026-08-31,06:30,0,15,Premium Economy,5742.0,741,250,6733,Observed
+OBS024,2026-08-17,Synthetic Demo,Air India,AI402,AMD,DEL,2026-10-01,08:00,0,45,Economy,4376.0,643,250,5269,Observed
+OBS025,2026-08-08,Synthetic Demo,SpiceJet,6E201,DEL,CCU,2026-10-07,18:00,0,60,Premium Economy,4678.0,635,180,5493,Observed
+OBS026,2026-08-09,Synthetic Demo,Air India Express,SG501,AMD,BLR,2026-08-24,15:30,0,15,Economy,5017.0,752,150,5919,Observed
+OBS027,2026-08-03,Synthetic Demo,SpiceJet,AI402,DEL,BOM,2026-08-18,15:30,0,15,Economy,4207.0,453,250,4910,Observed
+OBS028,2026-08-10,Synthetic Demo,SpiceJet,QP1401,BLR,MAA,2026-10-09,08:00,0,60,Premium Economy,3530.0,371,250,4151,Observed
+OBS029,2026-08-05,Synthetic Demo,Akasa Air,QP1102,DEL,BLR,2026-08-26,11:30,0,21,Premium Economy,6003.0,872,150,7025,Observed
+OBS030,2026-08-03,Synthetic Demo,Air India Express,6E101,DEL,BLR,2026-10-02,15:30,0,60,Premium Economy,5103.0,623,220,5946,Observed
+OBS032,2026-08-02,Synthetic Demo,Akasa Air,6E201,DEL,BOM,2026-08-23,15:30,1,21,Economy,4700.0,525,180,5405,Observed
+OBS033,2026-08-06,Synthetic Demo,Air India Express,QP1102,AMD,DEL,2026-09-05,18:00,0,30,Premium Economy,4822.0,651,220,5693,Observed
+OBS034,2026-08-02,Synthetic Demo,Air India Express,SG501,DEL,BOM,2026-08-23,15:30,0,21,Economy,3962.0,526,220,4708,Observed
+OBS035,2026-08-11,Synthetic Demo,Akasa Air,QP1102,AMD,BOM,2026-08-26,18:00,0,15,Economy,3683.0,546,180,4409,Observed
+OBS036,2026-08-19,Synthetic Demo,Akasa Air,IX321,AMD,DEL,2026-10-03,15:30,0,45,Premium Economy,5154.0,647,220,6021,Observed
+OBS037,2026-08-19,Synthetic Demo,Air India,IX321,DEL,BLR,2026-10-18,06:30,0,60,Premium Economy,6161.0,908,200,7269,Observed
+OBS038,2026-08-20,Synthetic Demo,Akasa Air,QP1401,AMD,BOM,2026-09-04,18:00,0,15,Premium Economy,5184.0,662,180,6026,Observed
+OBS039,2026-08-14,Synthetic Demo,Air India Express,IX321,AMD,BLR,2026-08-29,06:30,0,15,Premium Economy,5958.0,829,250,7037,Observed
+OBS040,2026-08-21,Synthetic Demo,Akasa Air,SG501,BOM,DEL,2026-08-22,11:30,1,1,Economy,6351.0,725,250,7326,Observed
+OBS042,2026-08-03,Synthetic Demo,Air India Express,IX321,BOM,BLR,2026-08-24,20:30,1,21,Economy,3493.0,469,150,4112,Observed
+OBS043,2026-08-14,Synthetic Demo,Air India,6E101,AMD,BLR,2026-08-15,11:30,0,1,Premium Economy,9030.0,1112,250,10392,Observed
+OBS044,2026-08-18,Synthetic Demo,SpiceJet,IX321,DEL,MAA,2026-08-19,20:30,0,1,Premium Economy,8269.0,1137,200,9606,Observed
+OBS045,2026-08-17,Synthetic Demo,Air India Express,SG501,DEL,BOM,2026-09-01,08:00,0,15,Economy,4214.0,488,250,4952,Observed
+OBS046,2026-08-03,Synthetic Demo,Air India,IX321,AMD,BLR,2026-08-24,09:45,0,21,Economy,5392.0,628,220,6240,Observed
+OBS047,2026-08-14,Synthetic Demo,IndiGo,IX321,DEL,BOM,2026-08-17,06:30,1,3,Premium Economy,6488.0,762,220,7470,Observed
+OBS048,2026-08-14,Synthetic Demo,SpiceJet,SG501,BLR,MAA,2026-09-04,11:30,0,21,Premium Economy,4262.0,509,220,4991,Observed
+OBS049,2026-08-06,Synthetic Demo,Air India Express,IX321,AMD,BLR,2026-10-05,06:30,0,60,Premium Economy,4984.0,613,150,5747,Observed
+OBS050,2026-08-09,Synthetic Demo,Air India Express,SG501,DEL,MAA,2026-08-30,15:30,0,21,Premium Economy,5742.0,847,220,6809,Observed
+OBS052,2026-08-08,Synthetic Demo,Air India,AI512,AMD,DEL,2026-09-07,09:45,1,30,Economy,4785.0,530,200,5515,Observed
+OBS053,2026-08-12,Synthetic Demo,Air India,AI402,DEL,CCU,2026-09-26,13:15,0,45,Economy,5039.0,648,220,5907,Observed
+OBS054,2026-08-13,Synthetic Demo,Air India,6E201,AMD,BOM,2026-09-03,13:15,0,21,Economy,4061.0,493,200,4754,Observed
+OBS055,2026-08-03,Synthetic Demo,SpiceJet,IX321,DEL,MAA,2026-10-02,20:30,0,60,Premium Economy,5744.0,756,220,6720,Observed
+OBS056,2026-08-05,Synthetic Demo,Air India Express,SG501,AMD,BLR,2026-08-20,20:30,1,15,Premium Economy,6100.0,684,150,6934,Observed
+OBS057,2026-08-09,Synthetic Demo,Air India Express,IX321,DEL,BOM,2026-08-10,15:30,0,1,Premium Economy,7975.0,870,180,9025,Observed
+OBS058,2026-08-12,Synthetic Demo,Akasa Air,QP1401,DEL,MAA,2026-08-27,06:30,0,15,Economy,4954.0,596,250,5800,Observed
+OBS059,2026-08-08,Synthetic Demo,Air India Express,6E101,BOM,DEL,2026-08-09,08:00,0,1,Economy,5847.0,655,250,6752,Observed
+OBS060,2026-08-12,Synthetic Demo,Air India Express,IX321,BLR,MAA,2026-08-19,15:30,0,7,Premium Economy,4828.0,543,150,5521,Observed
+OBS062,2026-08-20,Synthetic Demo,Akasa Air,QP1401,AMD,BOM,2026-09-10,11:30,0,21,Economy,3640.0,492,180,4312,Observed
+OBS063,2026-08-09,Synthetic Demo,IndiGo,AI402,AMD,DEL,2026-08-24,20:30,0,15,Economy,5074.0,626,220,5920,Observed
+OBS064,2026-08-11,Synthetic Demo,Air India,SG501,AMD,DEL,2026-08-26,08:00,0,15,Premium Economy,6551.0,844,150,7545,Observed
+OBS065,2026-08-05,Synthetic Demo,Air India,6E201,DEL,CCU,2026-08-20,11:30,0,15,Premium Economy,6970.0,972,180,8122,Observed
+OBS066,2026-08-17,Synthetic Demo,Air India Express,QP1401,BOM,DEL,2026-08-18,18:00,0,1,Economy,6092.0,834,180,7106,Observed
+OBS067,2026-08-21,Synthetic Demo,Air India,AI402,DEL,BLR,2026-10-05,11:30,0,45,Economy,4654.0,560,250,5464,Observed
+OBS068,2026-08-16,Synthetic Demo,Akasa Air,QP1401,AMD,DEL,2026-09-06,13:15,1,21,Economy,4681.0,684,250,5615,Observed
+OBS069,2026-08-07,Synthetic Demo,Air India Express,AI402,AMD,BOM,2026-08-28,13:15,0,21,Economy,3347.0,467,250,4064,Observed
+OBS070,2026-08-19,Synthetic Demo,Akasa Air,SG501,BOM,DEL,2026-10-03,13:15,1,45,Premium Economy,4845.0,604,150,5599,Observed
+OBS071,2026-08-20,Synthetic Demo,IndiGo,QP1401,BOM,BLR,2026-08-27,06:30,0,7,Economy,5166.0,732,250,6148,Observed
+OBS072,2026-08-19,Synthetic Demo,IndiGo,AI402,DEL,BLR,2026-10-18,20:30,1,60,Premium Economy,5570.0,720,220,6510,Observed
+OBS073,2026-08-03,Synthetic Demo,Air India Express,QP1102,DEL,MAA,2026-08-06,15:30,0,3,Economy,5865.0,789,200,6854,Observed
+OBS074,2026-08-13,Synthetic Demo,SpiceJet,6E201,AMD,DEL,2026-08-14,15:30,0,1,Premium Economy,7010.0,971,250,8231,Observed
+OBS075,2026-08-01,Synthetic Demo,SpiceJet,6E101,BOM,DEL,2026-08-04,11:30,0,3,Premium Economy,6642.0,916,180,7738,Observed
+OBS076,2026-08-09,Synthetic Demo,SpiceJet,SG501,AMD,BLR,2026-08-24,20:30,0,15,Economy,5418.0,706,180,6304,Observed
+OBS077,2026-08-06,Synthetic Demo,Akasa Air,IX321,BLR,MAA,2026-10-05,08:00,0,60,Economy,3205.0,339,180,3724,Observed
+OBS078,2026-08-16,Synthetic Demo,Akasa Air,IX321,BLR,MAA,2026-08-31,20:30,1,15,Economy,3767.0,403,180,4350,Observed
+OBS079,2026-08-20,Synthetic Demo,SpiceJet,QP1401,AMD,BLR,2026-10-04,18:00,0,45,Premium Economy,5596.0,638,200,6434,Observed
+OBS080,2026-08-19,Synthetic Demo,SpiceJet,SG501,BOM,DEL,2026-09-18,20:30,0,30,Premium Economy,4910.0,624,220,5754,Observed
+OBS081,2026-08-11,Synthetic Demo,Air India,AI512,DEL,BOM,2026-08-14,18:00,0,3,Premium Economy,7929.0,1072,220,9221,Observed
+OBS082,2026-08-13,Synthetic Demo,Air India,AI402,BOM,DEL,2026-10-12,15:30,0,60,Premium Economy,4926.0,716,150,5792,Observed
+OBS083,2026-08-05,Synthetic Demo,Air India Express,SG501,AMD,BLR,2026-09-19,13:15,0,45,Premium Economy,5537.0,789,250,6576,Observed
+OBS084,2026-08-13,Synthetic Demo,Akasa Air,6E201,BOM,DEL,2026-10-12,11:30,0,60,Economy,4067.0,494,150,4711,Observed
+OBS085,2026-08-21,Synthetic Demo,IndiGo,QP1401,BOM,DEL,2026-09-20,06:30,0,30,Premium Economy,5719.0,655,200,6574,Observed
+OBS086,2026-08-14,Synthetic Demo,Air India,AI402,DEL,BOM,2026-08-17,09:45,0,3,Economy,6180.0,736,180,7096,Observed
+OBS087,2026-08-16,Synthetic Demo,SpiceJet,SG501,AMD,BLR,2026-09-06,13:15,1,21,Premium Economy,6074.0,880,220,7174,Observed
+OBS088,2026-08-10,Synthetic Demo,SpiceJet,SG501,AMD,BLR,2026-09-24,15:30,0,45,Premium Economy,5459.0,670,200,6329,Observed
+OBS089,2026-08-07,Synthetic Demo,Air India Express,AI512,BOM,DEL,2026-09-21,18:00,0,45,Premium Economy,5154.0,591,220,5965,Observed
+OBS090,2026-08-09,Synthetic Demo,IndiGo,SG501,DEL,CCU,2026-10-08,13:15,0,60,Premium Economy,5214.0,570,200,5984,Observed
+OBS091,2026-08-05,Synthetic Demo,IndiGo,SG501,AMD,DEL,2026-08-20,06:30,0,15,Economy,4590.0,526,220,5336,Observed
+OBS092,2026-08-06,Synthetic Demo,Air India,QP1401,AMD,BLR,2026-08-13,09:45,0,7,Premium Economy,8682.0,996,200,9878,Observed
+OBS093,2026-08-04,Synthetic Demo,Air India Express,AI512,AMD,BOM,2026-09-03,18:00,0,30,Economy,3679.0,370,250,4299,Observed
+OBS094,2026-08-04,Synthetic Demo,Air India Express,IX321,DEL,MAA,2026-08-19,15:30,0,15,Economy,5031.0,658,250,5939,Observed
+OBS095,2026-08-11,Synthetic Demo,SpiceJet,SG501,DEL,BOM,2026-09-25,13:15,1,45,Economy,3407.0,501,200,4108,Observed
+OBS096,2026-08-16,Synthetic Demo,IndiGo,AI402,AMD,BOM,2026-09-06,18:00,1,21,Premium Economy,5157.0,707,250,6114,Observed
+OBS097,2026-08-14,Synthetic Demo,SpiceJet,6E201,AMD,BLR,2026-08-17,20:30,1,3,Premium Economy,6731.0,797,220,7748,Observed
+OBS098,2026-08-15,Synthetic Demo,Air India,QP1102,DEL,MAA,2026-09-29,15:30,0,45,Premium Economy,5860.0,869,220,6949,Observed
+OBS099,2026-08-03,Synthetic Demo,Air India,6E101,DEL,CCU,2026-10-02,15:30,0,60,Economy,4907.0,541,250,5698,Observed
+OBS100,2026-08-07,Synthetic Demo,SpiceJet,QP1102,DEL,BOM,2026-08-28,09:45,0,21,Premium Economy,5497.0,589,180,6266,Observed
