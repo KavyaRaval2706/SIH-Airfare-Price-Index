@@ -27,7 +27,7 @@ const FONT_MONO = "'IBM Plex Mono', ui-monospace, monospace";
      from fastapi.middleware.cors import CORSMiddleware
      app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 ============================================================================ */
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
+const API_BASE_URL = "";
 
 async function apiFetch(path) {
   const res = await fetch(`${API_BASE_URL}${path}`);
