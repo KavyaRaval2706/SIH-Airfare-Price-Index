@@ -4,8 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text, select, func
 from sqlalchemy.orm import Session
 
-from Backend.database import engine, SessionLocal
-from Backend.models import (
+from database import engine, SessionLocal
+from models import (
     IndexValue, 
     Route, 
     Airline,
@@ -14,7 +14,7 @@ from Backend.models import (
     IndexContribution
 )
 
-from Backend.schemas import (
+from schemas import (
     IndexResponse, 
     RouteResponse, 
     AirlineResponse,
