@@ -110,12 +110,6 @@ df = pd.concat(
 )
 
 
-# Create unique observation ID
-df.insert(
-    0,
-    "observation_id",
-    range(1, len(df) + 1)
-)
 
 
 # --------------------------------------------------

@@ -10,7 +10,6 @@ print("Dataset shape:", df.shape)
 
 # 1. Required columns
 required_columns = [
-    "observation_id",
     "source_dataset",
     "airline",
     "flight_code",
@@ -40,10 +39,6 @@ print(missing_columns)
 print("\nMissing values:")
 print(df.isna().sum())
 
-
-# 3. Observation ID uniqueness
-print("\nDuplicate observation IDs:")
-print(df["observation_id"].duplicated().sum())
 
 
 # 4. Duplicate complete rows

@@ -155,6 +155,9 @@ CREATE TABLE index_values (
 
     index_date DATE NOT NULL,
 
+    index_type VARCHAR(30) NOT NULL,
+    index_period VARCHAR(20),
+
     route_id INTEGER,
     airline_id INTEGER,
     booking_window_id INTEGER,
@@ -175,8 +178,57 @@ CREATE TABLE index_values (
         REFERENCES booking_windows(booking_window_id),
 
     CONSTRAINT valid_index_value
-        CHECK (index_value >= 0)
+        CHECK (index_value >= 0),
+
+    CONSTRAINT valid_index_type
+        CHECK (
+            index_type IN (
+                'daily',
+                'weekly',
+                'monthly',
+                'route',
+                'airline',
+                'booking_window'
+            )
+        )
 );
+
+
+CREATE INDEX idx_index_values_date
+    ON index_values(index_date);
+
+CREATE INDEX idx_index_values_type
+    ON index_values(index_type);
+
+CREATE INDEX idx_index_values_route
+    ON index_values(route_id);
+
+CREATE INDEX idx_index_values_airline
+    ON index_values(airline_id);
+
+CREATE INDEX idx_index_values_booking_window
+    ON index_values(booking_window_id);
+
+
+
+CREATE TABLE index_contributions (
+    contribution_id BIGSERIAL PRIMARY KEY,
+
+    index_date DATE NOT NULL,
+
+    dimension_type VARCHAR(30) NOT NULL,
+    dimension_value VARCHAR(100) NOT NULL,
+
+    contribution NUMERIC(12,4) NOT NULL
+);
+
+CREATE INDEX idx_contributions_date
+    ON index_contributions(index_date);
+
+CREATE INDEX idx_contributions_dimension
+    ON index_contributions(dimension_type);
+
+
 
 
 -- ============================================================

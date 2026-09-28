@@ -1,276 +1,170 @@
-# Calculation Team — Setup & Handoff
+# AeroIndex — Airfare Price Index for India
 
-## 1. What you will receive
+AeroIndex is a data-driven dashboard for measuring and monitoring changes in domestic airfare prices across India.
 
-I will give you:
+The project develops an **Airfare Price Index** designed to support analysis of airfare movements and future augmentation of consumer price statistics.
 
-1. **GitHub repository URL**
-2. **`airfare_project.dump`** through WhatsApp
+> **Note:** AeroIndex is an airfare index and analytics system. It is **not a flight booking system or a cheapest-ticket recommendation platform**.
 
-The dump contains the PostgreSQL database with the current airfare data.
+## Project
 
----
+**Smart India Hackathon — SIH26056**
 
-# 2. Clone the repository
+**Problem:** Development of a Real-time Airfare Price Index for India through automated collection of airline and online travel data for augmentation of the Consumer Price Index (CPI).
 
-Open **Command Prompt** and run:
+## Key Features
 
-```cmd
-git clone <REPOSITORY_URL>
-```
+* Current Airfare Price Index and percentage change
+* Historical daily, weekly and monthly index trends
+* Route-wise index analysis
+* Airline-wise index analysis
+* Booking-window analysis from **T+1 to T+50**
+* Why Did the Index Change? — route, airline and booking-window attribution
+* Historical data explorer
+* PostgreSQL-based data storage
+* REST APIs using FastAPI
 
-Then:
-
-```cmd
-cd SIH-Airfare-Price-Index
-```
-
----
-
-# 3. Install PostgreSQL
-
-Download PostgreSQL for Windows from:
-
-https://www.postgresql.org/download/windows/
-
-During installation:
-
-* Keep the default PostgreSQL port: `5432`
-* Create a password for the `postgres` user
-* Keep **pgAdmin 4** selected
-* Complete the installation
-
-PostgreSQL's official downloads provide Windows installers.
-
----
-
-# 4. Check PostgreSQL installation
-
-Open a **new Command Prompt** and run:
-
-```cmd
-psql --version
-```
-
-Then:
-
-```cmd
-pg_restore --version
-```
-
-You should get PostgreSQL version information.
-
-If Windows says that `pg_restore` is not recognized, run:
-
-```cmd
-"C:\Program Files\PostgreSQL\18\bin\pg_restore.exe" --version
-```
-
----
-
-# 5. Create the database
-
-Run:
-
-```cmd
-psql -U postgres -c "CREATE DATABASE airfare_project;"
-```
-
-Enter your PostgreSQL password.
-
----
-
-# 6. Restore the database dump
-
-Suppose you saved the dump in your Downloads folder.
-
-Run:
-
-```cmd
-pg_restore -U postgres -d airfare_project "C:\Users\YOUR_USERNAME\Downloads\airfare_project.dump"
-```
-
-Replace:
+## System Architecture
 
 ```text
-YOUR_USERNAME
+Data Sources
+     ↓
+Source Adapters
+     ↓
+Common Data Model
+     ↓
+Validation & Deduplication
+     ↓
+Normalization
+     ↓
+Fare Index Calculation
+     ↓
+PostgreSQL
+     ↓
+FastAPI
+     ↓
+AeroIndex Dashboard
 ```
 
-with your Windows username.
+The production architecture is designed to support permitted airline APIs, NDC integrations, OTA APIs and other authorized data sources through source-specific adapters.
 
-Example:
+## Index Methodology
 
-```cmd
-pg_restore -U postgres -d airfare_project "C:\Users\Rahul\Downloads\airfare_project.dump"
-```
+### Base Period
 
-The dump is in PostgreSQL custom format, so `pg_restore` is the correct tool for restoring it.
+The first seven available days, **16-01-2023 to 22-01-2023**, are used as the base period with an index value of **100**.
 
----
+### Daily Index
 
-# 7. Verify the database
+For each route and date:
 
-Run:
+1. Calculate the median airfare.
+2. Compare it with the route's base-period median.
+3. Calculate the price relative.
+4. Aggregate route-level price relatives to obtain the daily index.
 
-```cmd
-psql -U postgres -d airfare_project -c "\dt"
-```
+### Weekly & Monthly Index
 
-You should see:
+Weekly and monthly indices are calculated from the corresponding daily index values.
+
+### Booking Window
+
+Airfares are analyzed separately for each booking window from **T+1 to T+50**, where T represents the travel date. T+1 is used as the reference booking window.
+
+### Change Attribution
+
+Index changes can be examined through contributions from:
+
+* Routes
+* Airlines
+* Booking windows
+
+## Technology Stack
+
+| Component             | Technology           |
+| --------------------- | -------------------- |
+| Data Processing       | Python, Pandas       |
+| Data Validation       | Python               |
+| Database              | PostgreSQL           |
+| Backend               | FastAPI              |
+| Frontend              | React, Vite          |
+| Visualization         | Recharts             |
+| Database Connectivity | PostgreSQL / psycopg |
+| Version Control       | Git, GitHub          |
+
+## Project Structure
 
 ```text
-data_sources
-airlines
-routes
-flights
-cabin_classes
-booking_windows
-fare_observations
-index_values
+SIH-Airfare-Price-Index/
+│
+├── Backend/
+├── Frontend/
+├── Calculation/
+│   ├── index_engine.py
+│   └── Output/
+├── Cleaning/
+├── Data/
+│   ├── raw/
+│   └── processed/
+├── Database/
+├── Import/
+├── Normalization/
+├── Validation/
+├── .gitignore
+└── README.md
 ```
 
-Check the number of observations:
+Large datasets and database dumps are kept outside the Git repository.
 
-```cmd
-psql -U postgres -d airfare_project -c "SELECT COUNT(*) FROM fare_observations;"
+## Prototype Data
+
+The current prototype uses historical flight-fare data for development and demonstration.
+
+**Source:** [Kaggle — Airfare ML: Predicting Flight Fares](https://www.kaggle.com/datasets/yashdharme36/airfare-ml-predicting-flight-fares)
+
+Current prototype coverage:
+
+* **Date:** 16-01-2023 to 06-03-2023
+* **Airlines:** 9
+* **Routes:** 42
+* **Booking windows:** T+1 to T+50
+
+For production deployment, the system is intended to use permitted airline, NDC, OTA/API or other authorized sources.
+
+## Running the Project
+
+### Backend
+
+```bash
+cd Backend
+pip install -r requirements.txt
+uvicorn main:app --reload
 ```
 
-Expected result:
+### Frontend
+
+```bash
+cd Frontend
+npm install
+npm run dev
+```
+
+### Calculation
+
+The index calculation engine is located at:
 
 ```text
-745519
+Calculation/index_engine.py
 ```
 
----
-
-# 8. Install Python packages
-
-From the project folder, run:
-
-```cmd
-pip install pandas numpy psycopg[binary] python-dotenv
-```
-
----
-
-# 9. Create `.env`
-
-Inside the project root, create a file named:
+Generated calculation outputs are stored in:
 
 ```text
-.env
+Calculation/Output/
 ```
 
-Put:
+## Project Status
 
-```text
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=airfare_project
-DB_USER=postgres
-DB_PASSWORD=YOUR_POSTGRES_PASSWORD
-```
+AeroIndex is currently a **working prototype** developed for Smart India Hackathon.
 
-Replace:
-
-```text
-YOUR_POSTGRES_PASSWORD
-```
-
-with the password you created during PostgreSQL installation.
-
-**Do not commit `.env` to GitHub.**
-
----
-
-# 10. Test Python → PostgreSQL connection
-
-Run the existing connection test:
-
-```cmd
-python Import\test_postgresql.py
-```
-
-Expected output:
-
-```text
-PostgreSQL connection successful!
-```
-
----
-
-# 11. Calculation input
-
-Use the PostgreSQL table:
-
-```text
-fare_observations
-```
-
-The main fields required for calculation include:
-
-```text
-observation_id
-airline_id
-route_id
-cabin_class_id
-booking_window_id
-booking_date
-travel_date
-fare
-```
-
-
----
-
-# 12. Calculation outputs
-
-Generate these CSV files:
-
-```text
-daily_airfare_index.csv
-route_wise_airfare_index.csv
-airline_wise_airfare_index.csv
-booking_window_index.csv
-index_contributions.csv
-```
-
-
-# 13. What you have to provide me at the end
-
-Give me:
-
-### Calculation code
-
-```text
-index_engine.py
-```
-
-### Output files
-
-```text
-daily_airfare_index.csv
-route_wise_airfare_index.csv
-airline_wise_airfare_index.csv
-booking_window_index.csv
-index_contributions.csv
-```
-
-
-
-
-# Final handoff
-
-Your final calculation folder should contain approximately:
-
-```text
-Calculation/
-├── index_engine.py
-├── daily_airfare_index.csv
-├── route_wise_airfare_index.csv
-├── airline_wise_airfare_index.csv
-├── booking_window_index.csv
-└── index_contributions.csv
-```
-
-Send these files. Make folder of Calculation and keep all your files in it as shown above.
+The architecture is designed to support expansion from prototype historical data to permitted real-time airfare data sources.

@@ -58,10 +58,6 @@ conn = psycopg.connect(
 print("PostgreSQL connection successful.")
 
 
-# ------------------------------------------------------------
-# IMPORT DATA
-# ------------------------------------------------------------
-
 try:
 
     with conn.cursor() as cur:
@@ -73,6 +69,7 @@ try:
         sources = df["source_dataset"].dropna().unique()
 
         for source in sources:
+
             cur.execute(
                 """
                 INSERT INTO data_sources
@@ -93,6 +90,7 @@ try:
         airlines = df["airline"].dropna().unique()
 
         for airline in airlines:
+
             cur.execute(
                 """
                 INSERT INTO airlines
@@ -113,6 +111,7 @@ try:
         cabin_classes = df["cabin_class"].dropna().unique()
 
         for cabin_class in cabin_classes:
+
             cur.execute(
                 """
                 INSERT INTO cabin_classes
@@ -132,6 +131,7 @@ try:
 
         routes = (
             df[["source", "destination"]]
+            .dropna()
             .drop_duplicates()
         )
 
@@ -189,7 +189,10 @@ try:
         # ----------------------------------------------------
 
         booking_windows = (
-            df["booking_window"]
+            pd.to_numeric(
+                df["booking_window"],
+                errors="coerce"
+            )
             .dropna()
             .astype(int)
             .unique()
@@ -300,9 +303,13 @@ try:
 
         for _, row in df.iterrows():
 
-            source_id = source_lookup[row["source_dataset"]]
+            source_id = source_lookup[
+                row["source_dataset"]
+            ]
 
-            airline_id = airline_lookup[row["airline"]]
+            airline_id = airline_lookup[
+                row["airline"]
+            ]
 
             route_id = route_lookup[
                 (
@@ -311,6 +318,8 @@ try:
                 )
             ]
 
+
+            # Flight is optional
             flight_id = None
 
             if pd.notna(row["flight_code"]):
@@ -322,34 +331,52 @@ try:
                     )
                 )
 
+
             cabin_class_id = cabin_lookup[
                 row["cabin_class"]
             ]
+
 
             booking_window_id = booking_window_lookup[
                 int(row["booking_window"])
             ]
 
 
+            # ------------------------------------------------
+            # BOOKING DATE
+            # ------------------------------------------------
+
             booking_date = None
 
             if pd.notna(row["booking_date"]):
+
                 booking_date = pd.to_datetime(
                     row["booking_date"]
                 ).date()
 
 
+            # ------------------------------------------------
+            # TRAVEL DATE
+            # ------------------------------------------------
+
             travel_date = None
 
             if pd.notna(row["travel_date"]):
+
                 travel_date = pd.to_datetime(
                     row["travel_date"]
                 ).date()
 
 
+            # ------------------------------------------------
+            # PREPARE OBSERVATION
+            #
+            # observation_id    -> PostgreSQL identity
+            # observation_hash  -> PostgreSQL trigger
+            # ------------------------------------------------
+
             observations.append(
                 (
-                    int(row["observation_id"]),
                     source_id,
                     airline_id,
                     route_id,
@@ -358,8 +385,16 @@ try:
                     booking_window_id,
                     booking_date,
                     travel_date,
-                    row["departure_time"],
-                    row["arrival_time"],
+                    (
+                        None
+                        if pd.isna(row["departure_time"])
+                        else str(row["departure_time"])
+                    ),
+                    (
+                        None
+                        if pd.isna(row["arrival_time"])
+                        else str(row["arrival_time"])
+                    ),
                     int(row["duration_minutes"]),
                     int(row["stops"]),
                     float(row["fare"])
@@ -372,11 +407,11 @@ try:
         # ----------------------------------------------------
 
         print("Inserting fare observations...")
+        print("Observations prepared:", len(observations))
 
         cur.executemany(
             """
             INSERT INTO fare_observations (
-                observation_id,
                 source_id,
                 airline_id,
                 route_id,
@@ -393,30 +428,69 @@ try:
             )
             VALUES (
                 %s, %s, %s, %s, %s, %s, %s,
-                %s, %s, %s, %s, %s, %s, %s
-            );
+                %s, %s, %s, %s, %s, %s
+            )
+            ON CONFLICT (observation_hash)
+            DO NOTHING;
             """,
             observations
         )
 
 
-    # --------------------------------------------------------
-    # COMMIT
-    # --------------------------------------------------------
+        # ----------------------------------------------------
+        # 10. VERIFY HASHES
+        # ----------------------------------------------------
 
-    conn.commit()
+        cur.execute(
+            """
+            SELECT COUNT(*)
+            FROM fare_observations
+            WHERE observation_hash IS NULL;
+            """
+        )
 
-    print("\nImport completed successfully!")
-    print("Total observations imported:", len(observations))
+        missing_hashes = cur.fetchone()[0]
+
+        if missing_hashes > 0:
+
+            print(
+                "\nWARNING:",
+                missing_hashes,
+                "rows have NULL observation hashes."
+            )
+
+            conn.rollback()
+
+            print("Import rolled back.")
+
+            raise RuntimeError(
+                    f"{missing_hashes} rows have NULL observation hashes."
+            )
+
+
+        # ----------------------------------------------------
+        # COMMIT
+        # ----------------------------------------------------
+
+        conn.commit()
+
+        print("\n============================================================")
+        print("IMPORT COMPLETED SUCCESSFULLY")
+        print("============================================================")
+        print("CSV rows processed :", len(observations))
+        print("============================================================")
 
 
 except Exception as e:
 
     conn.rollback()
 
-    print("\nImport failed.")
+    print("\n============================================================")
+    print("IMPORT FAILED")
+    print("============================================================")
     print("Error:", e)
     print("All database changes have been rolled back.")
+    print("============================================================")
 
 
 finally:
