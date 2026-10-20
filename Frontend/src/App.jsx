@@ -243,7 +243,7 @@ function Overview() {
             <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginTop: 6, flexWrap: "wrap" }}>
               <span style={{ fontFamily: FONT_MONO, fontSize: 42, fontWeight: 700 }}>{latest.index_value}</span>
               <ChangeTag value={latest.percentage_change} />
-              <span style={{ color: "#C9BEA8", fontSize: 13 }}>as of {latest.index_date}</span>
+              <span style={{ color: "#C9BEA8", fontSize: 13 }}>as of {formatDate(latest.index_date)}</span>
             </div>
           </Card>
 
@@ -1148,7 +1148,7 @@ export default function App() {
             transform: "translateX(-50%)",
             fontFamily: FONT_HEAD,
             fontWeight: 700,
-            fontSize: 32,
+            fontSize: "clamp(22px, 7vw, 32px)",
             color: C.ink,
           }}>
             AeroIndex
